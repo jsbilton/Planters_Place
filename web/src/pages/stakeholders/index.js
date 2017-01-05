@@ -17,7 +17,11 @@ const Stakeholders = React.createClass({
   },
   render() {
     const listStakeholder = stakeholder =>
-    <li>{stakeholder.firstName + ' ' + stakeholder.lastName}</li>
+    <li key={stakeholder.id}>
+      <Link to={`stakeholders/${stakeholder.id}/show`}>
+      {stakeholder.firstName + ' ' + stakeholder.lastName}
+    </Link>
+    </li>
     return (
       <div>
         <h1>Stakeholder Roster</h1>

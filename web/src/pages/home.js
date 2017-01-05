@@ -5,10 +5,12 @@ const Home = React.createClass({
     return (
       <div>
         <h1>
-          Welcome Home
+          Planters Place HOA
         </h1>
         <h3>Menu</h3>
         <ul>
+          <li><Link to="/stakeholders">Stakeholders</Link></li>
+          <li><Link to="/topics">Topics</Link></li>
           <li><Link to="/about">About</Link></li>
         </ul>
       </div>

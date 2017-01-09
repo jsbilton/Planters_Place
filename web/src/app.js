@@ -5,6 +5,7 @@ const Home = require('./pages/home')
 const About = require('./pages/about')
 const Stakeholders = require('./pages/stakeholders')
 const Stakeholder = require('./pages/stakeholders/show')
+const StakeholderForm = require('./pages/stakeholders/form')
 //adding a Miss route
 const NoMatch = () => (
   <div>
@@ -21,6 +22,7 @@ const App = React.createClass({
           <Match pattern="/about" component={About} />
           <Match exactly pattern="/stakeholders" component={Stakeholders} />
           <Match pattern="/stakeholders/:id/show" component={Stakeholder} />
+          <Match exactly pattern="/stakeholders/new" component={StakeholderForm} />
 
           <Miss component={NoMatch} />
         </div>

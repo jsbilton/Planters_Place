@@ -10,20 +10,16 @@ const Stakeholder = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get('http://localhost:4000/stakeholders/' + this.props.params.id, {
-      json: true
-    }, (e, r, stakeholder) => {
+    this.props.get(this.props.params.id,
+      (e, stakeholder) => {
       if (e) return console.log(e.message)
       this.setState({stakeholder})
-      }
-    )
+      })
   },
   handleRemove(e) {
     e.preventDefault()
     if (confirm("Are you sure?") ) {
-      xhr.del('http://localhost:4000/stakeholders/' + this.state.person.id, {
-        json: this.state.stakeholder
-      }, (e, r, body) => {
+      this.props.remove(this.props.params.id, this.state.stakeholder, (e, body) => {
         if (e) return console.log(e.message)
         this.setState({removed: true})
       })

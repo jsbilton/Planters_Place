@@ -8,9 +8,7 @@ const Stakeholders = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get('http://localhost:4000/stakeholders', {
-      json: true
-    }, (e, r, stakeholders) => {
+    this.props.allDocs((e, stakeholders) => {
       if (e) return console.log(e.message)
     this.setState({stakeholders})
     })

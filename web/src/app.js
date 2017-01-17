@@ -23,6 +23,7 @@ const App = React.createClass({
           <Match exactly pattern="/stakeholders" component={Stakeholders} />
           <Match pattern="/stakeholders/:id/show" component={Stakeholder} />
           <Match exactly pattern="/stakeholders/new" component={StakeholderForm} />
+          <Match pattern="/stakeholders/:id/edit" component={StakeholderForm} />
 
           <Miss component={NoMatch} />
         </div>

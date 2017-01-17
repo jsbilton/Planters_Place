@@ -25,6 +25,7 @@ const Stakeholders = React.createClass({
     return (
       <div>
         <h1>Stakeholder Roster</h1>
+        <Link to="/stakeholders/new">New Stakeholder</Link>
         <ul>
           {this.state.stakeholders.map(listStakeholder)}
         </ul>

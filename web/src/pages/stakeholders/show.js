@@ -21,6 +21,8 @@ const Stakeholder = React.createClass({
     return(
       <div>
         <h3>{this.state.stakeholder.firstName + ' ' + this.state.stakeholder.lastName}</h3>
+        <Link to={`/stakeholders/${this.state.stakeholder.id}/edit`}>Edit</Link>
+        |
         <Link to="/stakeholders">Return</Link>
       </div>
     )

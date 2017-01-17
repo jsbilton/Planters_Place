@@ -31,13 +31,13 @@ const Service = Component => React.createClass({
   },
   render () {
     return (
-    <Component {...this.props}
-      allDocs={this.allDocs}
-      get={this.get}
-      post={this.post}
-      put={this.put}
-      remove={this.remove}
-    />
+      <Component {...this.props}
+        allDocs={this.allDocs}
+        get={this.get}
+        post={this.post}
+        put={this.put}
+        remove={this.remove}
+      />
     )
   }
 })

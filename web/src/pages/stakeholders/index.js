@@ -1,6 +1,6 @@
 const React = require('react')
 const {Link} = require('react-router')
-const xhr = require('xhr')
+// const xhr = require('xhr')
 const Stakeholders = React.createClass({
   getInitialState() {
     return {

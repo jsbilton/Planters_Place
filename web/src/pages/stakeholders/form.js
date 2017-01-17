@@ -16,8 +16,8 @@ const StakeholderForm = React.createClass({
   componentDidMount() {
     // check if there is an id props; if yes get the stakeholder doc
     if (this.props.params.id) {
-      xhr.get('http://localhostl:4000/stakeholders/' + this.props.params.id, {
-        json:true
+      xhr.get('http://localhost:4000/stakeholders/' + this.props.params.id, {
+        json: true
       }, (e, r, stakeholder) => {
         if (e) return console.log(e.message)
         this.setState(stakeholder)
@@ -34,14 +34,14 @@ const StakeholderForm = React.createClass({
   handleSubmit(e) {
     e.preventDefault()
     // if an update and a post if new stakeholder doc
-    if (this.state.id)
+    if (this.state.id) {
     xhr.put('http://localhost:4000/stakeholders/' + this.state.id, {
       json: this.state
     }, (e, r, body) => {
       if (e) return console.log(e.message)
       this.setState({success: true})
     })
-    else {
+   } else {
       xhr.post('http://localhost:4000/stakeholders', {
         json: this.state
       }, (e, r, body) => {

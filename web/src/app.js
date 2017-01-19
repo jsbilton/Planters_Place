@@ -11,6 +11,7 @@ const Service = require('./components/service')
 
 const Topics = require('./pages/topics')
 const Topic = require('./pages/topics/show')
+const TopicForm = require('./pages/topics/form')
 
 //adding a Miss route
 const NoMatch = () => (
@@ -33,6 +34,7 @@ const App = React.createClass({
 
           <Match exactly pattern="/topics" component={Topics} />
           <Match pattern="/topics/:id/show" component={Topic} />
+          <Match exactly pattern="/topics/new" component={TopicForm} />
 
 
           <Miss component={NoMatch} />

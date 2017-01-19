@@ -24,6 +24,7 @@ const Topics = React.createClass({
     return (
       <div>
         <h1>Topics List</h1>
+        <Link to="/topics/new">New Topic</Link>
         <ul>
           {this.state.topics.map(listTopic)}
         </ul>

@@ -3,10 +3,14 @@ const {BrowserRouter, Match, Miss, Link} = require('react-router')
 
 const Home = require('./pages/home')
 const About = require('./pages/about')
+
 const Stakeholders = require('./pages/stakeholders')
 const Stakeholder = require('./pages/stakeholders/show')
 const StakeholderForm = require('./pages/stakeholders/form')
 const Service = require('./components/service')
+
+const Topics = require('./pages/topics')
+
 //adding a Miss route
 const NoMatch = () => (
   <div>
@@ -25,6 +29,8 @@ const App = React.createClass({
           <Match pattern="/stakeholders/:id/show" component={Service(Stakeholder)} />
           <Match exactly pattern="/stakeholders/new" component={StakeholderForm} />
           <Match pattern="/stakeholders/:id/edit" component={StakeholderForm} />
+
+          <Match exactly pattern="/topics" component={Topics} />
 
 
           <Miss component={NoMatch} />

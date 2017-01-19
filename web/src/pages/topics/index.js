@@ -1,6 +1,7 @@
 const React = require('react')
 const xhr = require('xhr')
 const {Link} = require('react-router')
+
 const Topics = React.createClass({
   getInitialState() {
     return {
@@ -16,7 +17,10 @@ const Topics = React.createClass({
    })
   },
   render () {
-    const listTopic = topic => <li>{topic.name}</li>
+    const listTopic = topic =>
+    <li key={topic.id}>
+      <Link to={`/topics/${topic.id}/show`}>{topic.name}</Link>
+    </li>
     return (
       <div>
         <h1>Topics List</h1>

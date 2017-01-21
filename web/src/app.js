@@ -35,7 +35,7 @@ const App = React.createClass({
           <Match exactly pattern="/topics" component={Topics} />
           <Match pattern="/topics/:id/show" component={Topic} />
           <Match exactly pattern="/topics/new" component={TopicForm} />
-
+          <Match pattern="/topics/:id/edit" component={TopicForm} />
 
           <Miss component={NoMatch} />
         </div>

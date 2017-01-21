@@ -23,16 +23,34 @@ const TopicForm = React.createClass({
   },
   handleSubmit(e) {
     e.preventDefault()
-    xhr.post('http://localhost:4000/topics', { json: this.state}, (e, r, body) => {
-      if (e) return console.log(e.message)
-      this.setState({success: true})
-    })
+    if (this.state.id) {
+      xhr.put('http://localhost:4000/topics/' + this.state.id, { json: this.state }, (e, r, body) => {
+        if (e) return console.log(e.message)
+        this.setState({success: true})
+        })
+    } else {
+      xhr.post('http://localhost:4000/topics', { json: this.state }, (e, r, body) => {
+        if (e) return console.log(e.message)
+        this.setState({success: true})
+      })
+     }
+  },
+  componentDidMount() {
+    if (this.props.params.id) {
+      xhr.get('http://localhost:4000/topics/' + this.props.params.id, { json: true }, (e, r, topic) => {
+        if (e) return console.log(e.message)
+        this.setState(topic)
+      })
+    }
   },
   render() {
+    const formState = this.state.id ? 'Edit' : 'New'
     return (
       <div>
-        {this.state.success ? <Redirect to="/topics" /> : null }
-        <h3>New Topic</h3>
+        {this.state.success && this.state.id ? <Redirect to={`/topics/${this.state.id}/show`} /> : null }
+        {this.state.success && !this.state.id ? <Redirect to={`/topics`} /> : null }
+
+        <h3>{formState} Topic</h3>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label style={labelStyle}>Name</label>
@@ -71,7 +89,7 @@ const TopicForm = React.createClass({
           </div>
           <div>
             <button>Save</button>
-            <Link to="/topic"></Link>
+            <Link to="/topics">Cancel</Link>
           </div>
         </form>
       </div>

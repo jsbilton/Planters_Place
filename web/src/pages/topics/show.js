@@ -18,6 +18,7 @@ const Topic = React.createClass({
     return (
       <div>
         <h3>{this.state.topic.name}</h3>
+        <Link to={`/topics/${this.state.topic.id}/edit`}>Edit</Link>
         <Link to="/topics">Return</Link>
       </div>
     )

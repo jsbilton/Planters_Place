@@ -1,5 +1,4 @@
 const React = require('react')
-const xhr = require('xhr')
 const {Link, Redirect} = require('react-router')
 
 const Topic = React.createClass({
@@ -10,7 +9,7 @@ const Topic = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get('http://localhost:4000/topics/' + this.props.params.id, {json: true}, (e, r, topic) => {
+    this.props.get(this.props.params.id, (e, topic) => {
       if (e) return console.log(e.message)
       this.setState({topic})
     })
@@ -18,7 +17,7 @@ const Topic = React.createClass({
   handleRemove(e) {
     e.preventDefault()
     if (confirm("Sure?")) {
-      xhr.del('http://localhost:4000/topics/' + this.state.topic.id, { json: this.state.topic}, (e, r, body) => {
+      this.props.remove(this.props.params.id, this.state.topic, (e, body) => {
         if (e) return console.log(e.message)
         this.setState({removed: true})
       })

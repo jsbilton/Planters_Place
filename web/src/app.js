@@ -12,6 +12,7 @@ const Service = require('./components/service')
 const Topics = require('./pages/topics')
 const Topic = require('./pages/topics/show')
 const TopicForm = require('./pages/topics/form')
+const ServiceTopics = require('./components/serviceTopics')
 
 //adding a Miss route
 const NoMatch = () => (
@@ -32,8 +33,8 @@ const App = React.createClass({
           <Match exactly pattern="/stakeholders/new" component={StakeholderForm} />
           <Match pattern="/stakeholders/:id/edit" component={StakeholderForm} />
 
-          <Match exactly pattern="/topics" component={Topics} />
-          <Match pattern="/topics/:id/show" component={Topic} />
+          <Match exactly pattern="/topics" component={ServiceTopics(Topics)} />
+          <Match pattern="/topics/:id/show" component={ServiceTopics(Topic)} />
           <Match exactly pattern="/topics/new" component={TopicForm} />
           <Match pattern="/topics/:id/edit" component={TopicForm} />
 

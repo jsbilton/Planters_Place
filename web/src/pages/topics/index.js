@@ -1,5 +1,4 @@
 const React = require('react')
-const xhr = require('xhr')
 const {Link} = require('react-router')
 
 const Topics = React.createClass({
@@ -9,11 +8,9 @@ const Topics = React.createClass({
     }
   },
   componentDidMount() {
-  xhr.get('http://localhost:4000/topics', {
-    json: true
-  }, (e, r, topics) => {
-    if (e) return console.log(e.message)
-    this.setState({topics})
+    this.props.allDocs((e, topics) => {
+      if (e) return console.log(e.message)
+      this.setState({topics})
    })
   },
   render () {
@@ -23,7 +20,7 @@ const Topics = React.createClass({
     </li>
     return (
       <div>
-        <h1>Topics List</h1>
+        <h1>Community Topics</h1>
         <Link to="/topics/new">New Topic</Link>
         <ul>
           {this.state.topics.map(listTopic)}
